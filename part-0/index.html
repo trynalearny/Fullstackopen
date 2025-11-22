@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        form{
+        display:grid;
+        
+    }
+    input{
+        width:300px;
+    }
+    </style>
+</head>
+<body>
+    <form onsubmit="validate()">
+        <label>Enter your name</label>
+        <input type="text" id="name">
+        <label>Enter password </label>
+        <input type="password" id="pass">
+        <label>email address</label>
+        <input type="email" id="email">
+<input type="submit"/>
+
+    </form>
+    <script>
+function validate(){
+    event.preventDefault();
+    var name=document.getElementById('name').value;
+    var nameRegex=/^[a-zA-Z]+$/;
+    var nameresult=nameRegex.test(name);
+    if(nameresult==false){
+        alert('please eneter a name without any spaces');
+        return false;
+    }
+
+     var password=document.getElementById('pass').value;
+    var passRegex=/^(?=(?:.*[A-Z]){5})(?=(?:.*[^A-Za-z0-9\s]){6})(?=(?:.*-){2}).{13}$/;
+    var passresult=passRegex.test(password);
+    if(passresult==false){
+        alert('please enter valid pass:5 capital letters, 6 symbols, 2 hyphens, and 13 characters total.');
+        return false;
+    }
+var email=document.getElementById('email').value;
+var emailRegex=/^[a-zA-Z0-9._%+-]+@gmail\.com$/;
+var emailresult=emailRegex.test(email);
+ if(emailresult==false){
+        alert('please enter valid email that ends with @gmail.com');
+        return false;
+    }
+    alert('form submitted sucessfully!');
+    return true;
+}
+
+    </script>
+</body>
+</html>
